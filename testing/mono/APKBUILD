@@ -3,7 +3,7 @@
 # Maintainer:
 pkgname=mono
 pkgver=5.20.1.19
-pkgrel=0
+pkgrel=1
 pkgdesc="Free implementation of the .NET platform including runtime and compiler"
 url="https://www.mono-project.com/"
 arch="x86_64 x86 armv7"
@@ -13,6 +13,7 @@ depends_dev="libgdiplus-dev zlib-dev"
 makedepends="$depends_dev autoconf automake cmake libtool linux-headers paxmark python2"
 subpackages="$pkgname-dev $pkgname-doc $pkgname-lang"
 source="https://download.mono-project.com/sources/mono/mono-${pkgver/_/~}.tar.bz2
+	cfx-debug.patch
 	"
 
 prepare() {
@@ -66,4 +67,5 @@ package() {
 	rm ./usr/lib/libMonoSupportW.*
 }
 
-sha512sums="498fffc70c524cf21477196b6fdc3c5d03a719098c0a0ca40c29e239588675ddc0538659e4119171316f8f35555fcd42390d474dff0b795bf67188bc34a35ae0  mono-5.20.1.19.tar.bz2"
+sha512sums="498fffc70c524cf21477196b6fdc3c5d03a719098c0a0ca40c29e239588675ddc0538659e4119171316f8f35555fcd42390d474dff0b795bf67188bc34a35ae0  mono-5.20.1.19.tar.bz2
+8107b3c2910ccb1aeca00a611457868b77a82884f9963a823e9c90c8721419bc028e6cdd3fe1c8008e978cacc431220d8e5bd5707a0a1f9a4fb80448ff2543dc  cfx-debug.patch"
