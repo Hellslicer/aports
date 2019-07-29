@@ -49,7 +49,9 @@ build() {
 		--disable-boehm \
 		--enable-parallel-mark \
 		--with-mcs-docs=no \
-		--without-sigaltstack
+		--without-sigaltstack \
+                --with-tls=pthread \
+                --enable-static
 	make
 }
 
