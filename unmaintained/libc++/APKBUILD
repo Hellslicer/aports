@@ -2,8 +2,8 @@
 # Contributor: Shiz <hi@shiz.me>
 # Maintainer: Shiz <hi@shiz.me>
 pkgname=libc++
-pkgver=4.0.0
-pkgrel=1
+pkgver=8.0.0
+pkgrel=0
 _llvmver=${pkgver%%.*}
 pkgdesc="A new implementation of the C++ standard library, targeting C++11"
 url="https://libcxx.llvm.org/"
@@ -18,10 +18,9 @@ checkdepends="lit"
 subpackages="$pkgname-dev"
 source="https://releases.llvm.org/$pkgver/libcxx-$pkgver.src.tar.xz
 	https://releases.llvm.org/$pkgver/libcxxabi-$pkgver.src.tar.xz
-	check-for-musl-libcs-max_align_t.patch
 	avoid-strtoll_l.patch
 	disable-broken-tests.patch
-	no-libunwind-sources.patch"
+	musl.patch"
 builddir="$srcdir"
 _cxxdir="$srcdir/libcxx-$pkgver.src"
 _abidir="$srcdir/libcxxabi-$pkgver.src"
@@ -93,9 +92,8 @@ package() {
 	make install DESTDIR="$pkgdir"
 }
 
-sha512sums="6dad794c00919955e14710def169cdcde8a1743431479e993c4a6a3c87c2fd9f5dbd6e17542e524981eed0783dce70384c356b74ef3c6d70598c6ff03454b1dd  libcxx-4.0.0.src.tar.xz
-b69933a0bde00321323e98962cd54b78a48bc5e93448d7a5124cb5ef844497ba7648cd92fcbe476186c60c7742e3121841f150c142c2a14c1bf2aa26a8b93d64  libcxxabi-4.0.0.src.tar.xz
-6ad979fd7095940759cd1f51cc6d1d9a98dd78ecc51191f4d7bdbca834fcad7e5371ac6199512ca297267868bfbe1872258a903a03c98e7aa46700d31e79d24a  check-for-musl-libcs-max_align_t.patch
+sha512sums="2e0fcd3e78f7e15ea894e52c51351daef8e3a2aaf53b3df7497b11403d28f5269ff49a4674bacea1d565a5faa2b24502caaaeff9cd48518f0d141563d8f9cc03  libcxx-8.0.0.src.tar.xz
+9ee2e6d5899529be45b2e5edc395606fa9040d25789b3da1ae0182113626e7624cbb071eae525c478293a7b371876e41614348ee5808f90f3f9c7b08837e1055  libcxxabi-8.0.0.src.tar.xz
 212bbc1bcbc4628754bdd5bc8a9109fa0032790a3c80517a647a26ee27c22daa417303a72b6cc92cfc099dcc7fd9a36e9d8899165ebe4a5ab14030eaa596bc9c  avoid-strtoll_l.patch
-c3e4b9d68a9b7c7066f3a63c756fe682749d8d8abbfdf629d7ed085bbb5f69a1c2d79d0e53f036e0a5d9e501c48df15708560f3a4e6d68ac91c577572d181ccd  disable-broken-tests.patch
-7d514667bbbb3b32286b91c1b96126cc795ea37db0c6ecdb6502422a4bd6a55553ff2b85ba6cec2969d9d88402713cc4544b9b895b516693a0e5f31a5d628da4  no-libunwind-sources.patch"
+cc4d691daeac75ef63f4116e83d1c13bdd4936a10b082a69eb4d7df7aa6f05ae7290c9d327482b4bd43a71f383e9aaf193474a5fb38170a5fb3cefcc349406bf  disable-broken-tests.patch
+6d541abf7e3bf83ce9775ca4279c33c11ff17184fad0412e682e27db644f899a678de98a64dfeb387598081a644bcaa5f1443d48682972b2db23b00ba68eee5a  musl.patch"

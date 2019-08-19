@@ -44,20 +44,9 @@ diff -Nru a/libcxx/test/std/localization/locale.categories/category.numeric/loca
  
  #include <locale>
  #include <ios>
-diff -Nru a/libcxx/test/std/localization/locale.categories/category.numeric/locale.nm.put/facet.num.put.members/put_pointer.pass.cpp b/libcxx/test/std/localization/locale.categories/category.numeric/locale.nm.put/facet.num.put.members/put_pointer.pass.cpp
---- a/libcxx/test/std/localization/locale.categories/category.numeric/locale.nm.put/facet.num.put.members/put_pointer.pass.cpp	2017-05-15 02:01:56.842668781 +0000
-+++ b/libcxx/test/std/localization/locale.categories/category.numeric/locale.nm.put/facet.num.put.members/put_pointer.pass.cpp	2017-05-15 02:11:41.668288608 +0000
-@@ -38,6 +38,6 @@
-         char str[50];
-         output_iterator<char*> iter = f.put(output_iterator<char*>(str), ios, '*', v);
-         std::string ex(str, iter.base());
--        assert(ex == "0x0" || ex == "(nil)");
-+        assert(ex == "0" || ex == "0x0" || ex == "(nil)");
-     }
- }
-diff -Nru a/libcxx/test/libcxx/test/target_info.py b/libcxx/test/libcxx/test/target_info.py
---- a/libcxx/test/libcxx/test/target_info.py  2017-05-15 23:31:06.698175150 +0000
-+++ b/libcxx/test/libcxx/test/target_info.py  2017-05-15 23:34:59.805751050 +0000
+diff -Nru a/libcxx/utils/libcxx/test/target_info.py b/libcxx/utils/libcxx/test/target_info.py
+--- a/libcxx/utils/libcxx/test/target_info.py  2017-05-15 23:31:06.698175150 +0000
++++ b/libcxx/utils/libcxx/test/target_info.py  2017-05-15 23:34:59.805751050 +0000
 @@ -35,6 +35,7 @@
  
  def test_locale(loc):

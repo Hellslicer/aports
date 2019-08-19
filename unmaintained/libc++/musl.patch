@@ -1,0 +1,18 @@
+diff --git a/libcxx/src/filesystem/operations.cpp b/libcxx/src/filesystem/operations.cpp
+index 4e6cb1427..41b462727 100644
+--- a/libcxx/src/filesystem/operations.cpp
++++ b/libcxx/src/filesystem/operations.cpp
+@@ -26,11 +26,13 @@
+ #include <fcntl.h> /* values for fchmodat */
+ 
+ #if defined(__linux__)
++#ifdef __GLIBC__
+ #include <linux/version.h>
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 33)
+ #include <sys/sendfile.h>
+ #define _LIBCPP_USE_SENDFILE
+ #endif
++#endif
+ #elif defined(__APPLE__) || __has_include(<copyfile.h>)
+ #include <copyfile.h>
+ #define _LIBCPP_USE_COPYFILE
